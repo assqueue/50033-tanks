@@ -6,7 +6,6 @@ public class TankShooting : MonoBehaviour
     public int m_PlayerNumber = 1;
     public Rigidbody m_Shell;
     public Transform m_FireTransform;
-    public Slider m_AimSlider;
     public AudioSource m_ShootingAudio;
     public AudioClip m_ChargingClip;
     public AudioClip m_FireClip;
@@ -23,7 +22,6 @@ public class TankShooting : MonoBehaviour
     private void OnEnable()
     {
         m_CurrentLaunchForce = m_MinLaunchForce;
-        m_AimSlider.value = m_MinLaunchForce;
     }
 
 
@@ -33,10 +31,8 @@ public class TankShooting : MonoBehaviour
         m_ChargeSpeed = (m_MaxLaunchForce - m_MinLaunchForce) / m_MaxChargeTime;
     }
 
-
     private void Update()
     {
-        m_AimSlider.value = m_MinLaunchForce;
 
         if (m_CurrentLaunchForce >= m_MaxLaunchForce && !m_Fired)
         {
@@ -54,14 +50,14 @@ public class TankShooting : MonoBehaviour
         else if (Input.GetButton(m_FireButton) && !m_Fired)
         {
             m_CurrentLaunchForce += m_ChargeSpeed * Time.deltaTime;
-            m_AimSlider.value = m_CurrentLaunchForce;
         }
         else if (Input.GetButtonUp(m_FireButton) && !m_Fired)
         {
             Fire(m_CurrentLaunchForce, 1);
         }
-    }
 
+    }
+    
 
     public void Fire(float launchForce, float fireRate)
     {
@@ -79,5 +75,5 @@ public class TankShooting : MonoBehaviour
 
         m_CurrentLaunchForce = m_MinLaunchForce;
     }
-    
+
 }

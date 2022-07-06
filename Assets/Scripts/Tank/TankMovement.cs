@@ -23,7 +23,9 @@ public class TankMovement : MonoBehaviour
     private void Awake()
     {
         m_Rigidbody = GetComponent<Rigidbody>();
+       
     }
+
 
 
     private void OnEnable ()
@@ -96,4 +98,6 @@ public class TankMovement : MonoBehaviour
         Quaternion turnRotation = Quaternion.Euler(0f, turn, 0f);
         m_Rigidbody.MoveRotation(m_Rigidbody.rotation * turnRotation);
     }
+
+
 }

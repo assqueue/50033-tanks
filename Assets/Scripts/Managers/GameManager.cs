@@ -92,7 +92,6 @@ public class GameManager : MonoBehaviour
     private IEnumerator RoundPlaying()
     {
         EnableTankControl();
-
         m_MessageText.text = string.Empty;
 
         while (!OneTankLeft()) yield return null;
@@ -189,4 +188,5 @@ public class GameManager : MonoBehaviour
     {
         for (int i = 0; i < m_Tanks.Length; i++) m_Tanks[i].DisableControl();
     }
+
 }
